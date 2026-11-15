@@ -36,6 +36,7 @@ static class Program
         Build();
         // Compare already-published managed snapshots. Unity's native frame clock and
         // hardware polling are unavailable in this process and are a separate gate.
+        checks += OpenXRInputChecks.Run();
         SteamVR_Action.startUpdatingSourceOnAccess = false;
         VRInputActions.Initialize(VRBackend.Active.Input);
         Require(!VRInputActions.Valheim.IsActive(), "native action-set lookup retains catalog capitalization");
